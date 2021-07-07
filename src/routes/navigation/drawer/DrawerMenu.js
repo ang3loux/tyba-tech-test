@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, SafeAreaView, Text } from 'react-native'
-
+import { View, SafeAreaView } from 'react-native'
+import { useDispatch } from 'react-redux'
 import { DrawerActions } from '@react-navigation/native'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
+import Button from 'components/Button'
 import { colors } from 'theme'
+import { logOut } from 'slices/app.slice'
 
 const styles = {
   root: {
@@ -20,28 +22,38 @@ const styles = {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
   },
 }
 
-const DrawerMenu = (props) => (
-  <SafeAreaView style={styles.root}>
-    <View style={styles.head}>
-      <FontIcon.Button
-        name="times"
-        size={20}
-        color={colors.gray}
-        backgroundColor="white"
-        onPress={() => {
-          props.navigation.dispatch(DrawerActions.closeDrawer())
-        }}
-      />
-    </View>
-    <View style={styles.main}>
-      <Text>Drawer Menu</Text>
-    </View>
-  </SafeAreaView>
-)
+const DrawerMenu = (props) => {
+  const dispatch = useDispatch()
+
+  return (
+    <SafeAreaView style={styles.root}>
+      <View style={styles.head}>
+        <FontIcon.Button
+          name="times"
+          size={20}
+          color={colors.gray}
+          backgroundColor="white"
+          onPress={() => {
+            props.navigation.dispatch(DrawerActions.closeDrawer())
+          }}
+        />
+      </View>
+      <View style={styles.main}>
+        <Button
+          title="Log out"
+          color="white"
+          backgroundColor={colors.purple}
+          onPress={() => {
+            dispatch(logOut())
+          }}
+        />
+      </View>
+    </SafeAreaView>
+  )
+}
 
 DrawerMenu.propTypes = {
   navigation: PropTypes.shape({

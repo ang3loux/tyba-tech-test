@@ -2,14 +2,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { colors } from 'theme'
 import Home from 'scenes/home'
-import Profile from 'scenes/profile'
-import Details from 'scenes/details'
+import History from 'scenes/history'
 import HeaderLeft from './HeaderLeft'
-import HeaderTitle from './HeaderTitle'
-
-// ------------------------------------
-// Constants
-// ------------------------------------
 
 const Stack = createStackNavigator()
 
@@ -18,10 +12,6 @@ const navigationProps = {
   headerStyle: { backgroundColor: colors.darkPurple },
   headerTitleStyle: { fontSize: 18 },
 }
-
-// ------------------------------------
-// Navigators
-// ------------------------------------
 
 export const HomeNavigator = () => (
   <Stack.Navigator
@@ -35,16 +25,6 @@ export const HomeNavigator = () => (
       options={({ navigation }) => ({
         title: 'Home',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
-      })}
-    />
-    <Stack.Screen
-      name="Details"
-      component={Details}
-      options={({ navigation }) => ({
-        title: 'Home',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
       })}
     />
   </Stack.Navigator>
@@ -52,25 +32,17 @@ export const HomeNavigator = () => (
 
 export const ProfileNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Profile"
+    initialRouteName="History"
     headerMode="screen"
     screenOptions={navigationProps}
   >
     <Stack.Screen
-      name="Profile"
-      component={Profile}
+      name="History"
+      component={History}
       options={({ navigation }) => ({
-        title: 'Profile',
+        title: 'History',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
       })}
-    />
-    <Stack.Screen
-      name="Details"
-      component={Details}
-      options={{
-        title: 'Details',
-      }}
     />
   </Stack.Navigator>
 )
