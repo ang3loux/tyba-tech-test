@@ -24,11 +24,12 @@ const Button = ({
   children,
   textStyle,
   style,
+  ...buttonProps
 }) => {
   const btnStyle = [styles.root, { width, height, backgroundColor }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
-    <TouchableOpacity onPress={onPress} style={btnStyle}>
+    <TouchableOpacity onPress={onPress} style={btnStyle} {...buttonProps}>
       {title && <Text style={txtStyle}>{title}</Text>}
       {children}
     </TouchableOpacity>
