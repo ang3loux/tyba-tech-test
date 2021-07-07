@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    "no-unused-vars": "warn",
     semi: [2, 'never'],
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
