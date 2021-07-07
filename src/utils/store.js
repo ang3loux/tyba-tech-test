@@ -5,10 +5,11 @@ import {
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import appReducer from 'slices/app.slice'
+import brewerReducer from 'slices/brewer.slice'
 
 const rootReducer = combineReducers({
   app: appReducer,
-  // add more reducers
+  brewer: brewerReducer,
 })
 
 const defaultMiddleware = getDefaultMiddleware({

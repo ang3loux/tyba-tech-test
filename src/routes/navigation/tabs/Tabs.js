@@ -24,10 +24,10 @@ const TabNavigator = () => (
                 solid
               />
             )
-          case 'Profile':
+          case 'History':
             return (
               <FontIcon
-                name="user"
+                name="list"
                 color={focused ? colors.lightPurple : colors.gray}
                 size={20}
                 solid
@@ -41,19 +41,13 @@ const TabNavigator = () => (
     tabBarOptions={{
       activeTintColor: colors.lightPurple,
       inactiveTintColor: colors.gray,
-      style: {
-        // backgroundColor: 'white',
-        // borderTopColor: 'gray',
-        // borderTopWidth: 1,
-        // paddingBottom: 5,
-        // paddingTop: 5,
-      },
+      style: {},
     }}
     initialRouteName="Home"
     swipeEnabled={false}
   >
     <Tab.Screen name="Home" component={HomeNavigator} />
-    <Tab.Screen name="Profile" component={ProfileNavigator} />
+    <Tab.Screen name="History" component={ProfileNavigator} />
   </Tab.Navigator>
 )
 
