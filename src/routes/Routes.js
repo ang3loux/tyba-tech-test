@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react'
-import { Text } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { authenticate } from 'slices/app.slice'
-import Main from './navigation'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import AuthNavigation from './auth-navigation'
+import Navigation from './navigation'
 
 const Routes = () => {
-  const { checked, loggedIn } = useSelector((state) => state.app)
-  const dispatch = useDispatch()
+  const { token } = useSelector((state) => state.app)
 
-  useEffect(() => {
-    dispatch(authenticate({ loggedIn: true, checked: true }))
-  }, [])
-
-  // TODO: switch router by loggedIn state
-  console.log('[##] loggedIn', loggedIn)
-
-  // rendering
-  if (!checked) return <Text>Loading...</Text>
-  return <Main />
+  if (!token) return <AuthNavigation />
+  return <Navigation />
 }
 
 export default Routes
